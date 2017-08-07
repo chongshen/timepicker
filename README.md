@@ -1,4 +1,4 @@
-# timepicker
+# Custom Control in Dynamics 365: Time Picker (Time-only Field)
 
 In the system pre-defined data types of Dynamics CRM, two formats are available for "Date and Time": Date Only, Date and Time. Where is time-only? This can be a really common scenario. For example, client may want to create reoccurring appointments that happens everyday.
 
