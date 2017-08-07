@@ -1,0 +1,115 @@
+<html><head>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<meta></head>
+
+<body style="word-wrap: break-word;"><div class="selectinput">
+  <select id="select" onchange="selecttoinput(this)">
+    <option></option>
+        <option value="0000">12:00 AM</option>
+        <option value="0030">12:30 AM</option>
+        <option value="100">1:00 AM</option>
+        <option value="130">1:30 AM</option>
+        <option value="200">2:00 AM</option>
+        <option value="230">2:30 AM</option>
+        <option value="300">3:00 AM</option>
+        <option value="330">3:30 AM</option>
+        <option value="400">4:00 AM</option>
+        <option value="430">4:30 AM</option>
+        <option value="500">5:00 AM</option>
+        <option value="530">5:30 AM</option>
+        <option value="600">6:00 AM</option>
+        <option value="630">6:30 AM</option>
+        <option value="700">7:00 AM</option>
+        <option value="730">7:30 AM</option>
+        <option value="800">8:00 AM</option>
+        <option value="830">8:30 AM</option>
+        <option value="900">9:00 AM</option>
+        <option value="930">9:30 AM</option>
+        <option value="1000">10:00 AM</option>
+        <option value="1030">10:30 AM</option>
+        <option value="1100">11:00 AM</option>
+        <option value="1130">11:30 AM</option>
+        <option value="1200">12:00 PM</option>
+        <option value="1230">12:30 PM</option>
+        <option value="1300">1:00 PM</option>
+        <option value="1330">1:30 PM</option>
+        <option value="1400">2:00 PM</option>
+        <option value="1430">2:30 PM</option>
+        <option value="1500">3:00 PM</option>
+        <option value="1530">3:30 PM</option>
+        <option value="1600">4:00 PM</option>
+        <option value="1630">4:30 PM</option>
+        <option value="1700">5:00 PM</option>
+        <option value="1730">5:30 PM</option>
+        <option value="1800">6:00 PM</option>
+        <option value="1830">6:30 PM</option>
+        <option value="1900">7:00 PM</option>
+        <option value="1930">7:30 PM</option>
+        <option value="2000">8:00 PM</option>
+        <option value="2030">8:30 PM</option>
+        <option value="2100">9:00 PM</option>
+        <option value="2130">9:30 PM</option>
+        <option value="2200">10:00 PM</option>
+        <option value="2230">10:30 PM</option>
+        <option value="2300">11:00 PM</option>
+        <option value="2330">11:30 PM</option>
+  </select>
+  <input type="text" name="displayValue" id="displayValue" placeholder="select a time" onfocus="this.select()">
+  <input name="idValue" id="idValue" type="hidden">
+</div>
+
+<style>
+
+.selectinput{
+    position:relative;
+    width:200px;
+    height:25px;
+    border:0;
+    padding:0;
+    margin-left:15px;
+}
+
+select{
+	position:absolute;
+    top:0px;
+    left:0px;
+    width:170px; 
+    height:23px;
+    line-height:21px;
+    margin:0;
+    padding:0;
+}
+
+input{
+	position:absolute;
+    top:0px;
+    left:0px;
+    width:153px;
+    width:180px\9;
+    #width:180px;
+    height:23px; 
+    height:21px\9;
+    #height:18px;
+    border:1px solid #AAAAAA;
+}
+
+</style>
+
+<script>
+
+function selecttoinput(selectObject){
+	var timeselected = selectObject.options[selectObject.selectedIndex];
+	document.getElementById('displayValue').value = timeselected.text;
+    document.getElementById('idValue').value = timeselected.value;
+	window.parent.Xrm.Page.getAttribute("lcrm_starttime").setValue(timeselected.text);
+}
+
+$('#displayValue').blur(function() {
+	var inputvalue = $("#displayValue").val(); 
+    window.parent.Xrm.Page.getAttribute("lcrm_starttime").setValue(inputvalue);
+});
+
+
+
+</script>
+</body></html>
