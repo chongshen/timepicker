@@ -4,6 +4,7 @@ In the system pre-defined data types of Dynamics CRM, two formats are available 
 
 One simple, no-code solution is to create an option set. But what if the client wants the time to be specific to minutes? You'll have to create 24*60=1440 labels for the option set. Scrolling through all 1440 labels will be a terrible UX. Not a good idea.
 
+# Solution: time picker
 Just like the system pre-defined date and time field, the user will first pick a time, and then edit the time value input if the minute is not exactly at HH:00 or HH:30.
 
 I have created a web resource to serve as a time picker that work exactly like this.
