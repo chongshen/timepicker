@@ -1,13 +1,14 @@
 <html><head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-<meta></head>
+<meta><meta></head>
 
-	
-	<!--Inspired by Devang Rathod: 
+<!--Inspired by Devang Rathod: 
 https://stackoverflow.com/users/1982525/devang-rathod
 https://stackoverflow.com/questions/18309059/drop-down-menu-text-field-in-one -->
-	
-<body style="word-wrap: break-word;"><div class="selectinput">
+
+<body style="word-wrap: break-word;">
+<div class="selectinput">
+<form id="timepicker">
   <select id="select" onchange="selecttoinput(this)">
     <option></option>
         <option value="0000">12:00 AM</option>
@@ -61,6 +62,7 @@ https://stackoverflow.com/questions/18309059/drop-down-menu-text-field-in-one --
   </select>
   <input type="text" name="displayValue" id="displayValue" placeholder="select a time" onfocus="this.select()">
   <input name="idValue" id="idValue" type="hidden">
+</form>
 </div>
 
 <style>
@@ -102,6 +104,8 @@ input{
 
 <script>
 
+var form = document.getElementById("timepicker");
+
 function selecttoinput(selectObject){
 	var timeselected = selectObject.options[selectObject.selectedIndex];
 	document.getElementById('displayValue').value = timeselected.text;
@@ -110,11 +114,29 @@ function selecttoinput(selectObject){
 }
 
 $('#displayValue').blur(function() {
+	var oldvalue = window.parent.Xrm.Page.getAttribute("lcrm_starttime").getValue();
 	var inputvalue = $("#displayValue").val(); 
-    window.parent.Xrm.Page.getAttribute("lcrm_starttime").setValue(inputvalue);
+    var regexp = /^(0?[1-9]|1[012])(:[0-5]\d) [APap][mM]$/;
+    var res = regexp.test(inputvalue);
+    if (inputvalue != ""){
+    	if (res == false){
+        	alert("please enter a valid time. ");
+            $("#displayValue").val(oldvalue);
+        }
+        else{
+        	window.parent.Xrm.Page.getAttribute("lcrm_starttime").setValue(inputvalue);
+        }
+    
+    }
+
 });
 
-
+$(document).ready(function(){
+	var starttime = window.parent.Xrm.Page.getAttribute("lcrm_starttime").getValue();
+	if (starttime != null){
+		$("#displayValue").val(starttime);
+	}
+});
 
 </script>
 </body></html>
