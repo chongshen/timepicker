@@ -21,6 +21,5 @@ DEMO: https://www.youtube.com/watch?v=VKyzNjsDTXs
 window.parent.Xrm.Page.getAttribute("new_StartTime").setValue(timeselected.text);
 window.parent.Xrm.Page.getAttribute("new_StartTime").setValue(inputvalue);
 
-Note: This version does not have input validation. 
 
-(JavaScript input validation coming soon)
+08/08/2017 Update: Now with Javascript input validation.
